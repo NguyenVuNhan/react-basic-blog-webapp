@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Page404 } from "pages/Error";
+import AddPost from "pages/PostFeatured/AddPost";
+import PostDetails from "pages/PostFeatured/PostDetails";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Switch>
+        <Route exact path="/post/add" component={AddPost} />
+        <Route exact path="/post/:id" component={PostDetails} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route component={Page404} />
+      </Switch>
     </div>
   );
-}
+};
 
 export default App;
